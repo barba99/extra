@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<!-- saved from url=# -->
+
+<html lang="es-ES" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+
+    <meta name="description" content="Pagina Oficial נσяGє вαявα, #נσяGє вαявα">
+
+    <meta name="author" content="JM Anton">
+
+    <meta name="google" content="notranslate">
+
+    <meta name="og:description" content="Lc Return, #Lc Return">
+
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+
+    <link rel="icon" href="#" type="image/x-icon">
+
+    <title>PikaGen</title>
+
+    <link rel="stylesheet" type="text/css" href="./Corp Pops_files/estilos2.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <center>
+
+               <embed src="Corp Pops_files/Black Clover Opening 4 Full『Kumi Koda - Guess Who Is Back』.mp3" width="0" id="0" height="0" name="0"></embed>
+
+               <title>PikaGen 7w7r</title>
+
+        </center>
+
+    </header>
+
+    <div class="barra">
+
+        <div align="center">
+
+          <h1><span class="titulo"><strong><em>Extrapolador de Cc </em></strong></span><br>
+
+              
+
+<script>
+
+function trimSpaces(s){
+
+        var res;
+
+        var i;
+
+        res = "";
+
+        for (i = 0; i < s.length; i++){
+
+                if ((s.charAt(i) != " ") && (s.charAt(i) != "-"))
+
+                        res += s.charAt(i);
+
+        }
+
+        return res;
+
+}
+
+function isValidInput(s){
+
+        for (i = 0; i < s.length; i++){
+
+                var i;
+
+                if ((s.charAt(i) < "0") || (s.charAt(i) > "9"))
+
+                        return false;
+
+        }
+
+        return true;
+
+}
+
+function fix(num){
+
+        if (num <= 9) return num; else return (num - 9);
+
+}
+
+function check(number){
+
+        var i;
+
+        var ganjil;
+
+        var genap;
+
+        var tanda;
+
+        genap = 0;
+
+        ganjil = 0;
+
+        //tanda = 1 artinya jumlah digitnya ganjil
+
+        if (number.length % 2) tanda = 0; else tanda = 1;
+
+        for (i = 0; i < number.length; i++) {
+
+                if ((i + tanda) % 2) //ganjil
+
+                        ganjil += fix(2 * (number.charAt(i)));
+
+                else
+
+                        genap += parseInt(number.charAt(i), 10);
+
+        }
+
+        return (((ganjil + genap) % 10) == 0);
+
+}
+
+function validateInput(inp){
+
+        var tmp;
+
+        var Msg;
+
+        var Msg2;
+
+        tmp = trimSpaces(inp.nomor.value)
+
+        if ((tmp == "") || (!isValidInput(tmp))){
+
+                alert("Nomor Kartu yang Anda masukkan Salah !!");
+
+                return false;
+
+        }
+
+        Msg = "Kartu ini ";
+
+        Msg2 = "";
+
+        if (check(tmp))
+
+                alert(Msg + "\n\nVALID!!\n\n" + Msg2);
+
+        else
+
+                alert(Msg + "\n\nTIDAK VALID!!\nCek lagi Nomor Kartunya.\n\n" + Msg2);
+
+        return false;
+
+}
+
+//mencari beberapa angka valid yang dekat dengan nomor yang diberikan
+
+function findN(formName){
+
+        var start;
+
+        var startn;
+
+        var res;
+
+        var i;
+
+        var exp;
+
+        var cvv;
+
+        var delim;
+
+        expH = trimSpaces(formName.exp.value);
+
+        cvvH = trimSpaces(formName.cvv.value);
+
+        delimH = trimSpaces(formName.delim.value);
+
+        start = trimSpaces(formName.nomor.value);
+
+        if ((start == "") || (!isValidInput(start))){
+
+                alert("escribe bien la cc");
+
+                return;
+
+        }
+
+        res = "";
+
+        startn = parseInt(start,10);
+
+        for (i=-50; i<79000; i++)  {
+
+                num = "" + (parseInt(start,10)+i);
+
+                if (check(num)) {
+
+                        res += (startn + i) + delimH + expH + delimH + cvvH + "\n";
+
+                }
+
+        }
+
+        formName.hasil.value = res;
+
+}       
+
+</script>
+
+<br>
+
+<center>
+
+    <div class="formulario">
+
+        <form name="InpForm" onsubmit="return validateInput(this);">
+
+            <div class="tarjetas">
+
+                <label for="nomor" class="instertarcc">Tarjeta</label>
+
+                <input type="TEXT" name="nomor" placeholder="Inserta CC" maxlength="16" size="16">
+
+            </div>
+
+            <br><br>
+
+            <div class="fechas">
+
+                <label for="exp">Fecha</label>
+
+                <input type="TEXT" name="exp" placeholder="MM|YYYY" maxlength="7" size="8">
+
+            </div>
+
+            <div class="codigos">
+
+                <label for="cvv">CVV</label>
+
+                <input type="TEXT" name="cvv" placeholder="CVV" maxlength="4" size="5">
+
+            </div>
+
+            <div class="separador">
+
+                <label for="delim">Separador</label>
+
+                <input type="TEXT" name="delim" value="|" size="1">
+
+            </div>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <input class="boton" type="BUTTON" name="buat" onclick="findN(InpForm)" value="Extrapolar">
+
+            <br>
+
+            <br>
+
+            <textarea name="hasil" placeholder="Pega aqui la cc""></textarea>
+
+            <div id="jumlah" style="display: none;"></div>
+
+        </form>
+
+    </div>
+
+</center>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<footer>
+
+    <center>
+
+        <div class="copyreit">
+
+            <a href="#" class="Pikachu7w7">#נσяGє вαявα</a>
+
+            <p>Todos los derechos reservados</p>
+
+            <p>@2022</p>
+
+            <img src="Corp Pops_files/icono-paypal-tarjetas.png" width="472" height="148">
+
+        </div>
+
+    </center>
+
+</footer>
+
+</center></body></html>
